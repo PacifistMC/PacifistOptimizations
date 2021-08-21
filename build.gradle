@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.0'
+    id 'net.kyori.indra' version "2.0.6"
+}
+
+group 'me.rancraftplayz'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://repo.spongepowered.org/maven' }
+    maven { url = "https://maven.quiltmc.org/repository/release/" }
+    maven { url = "https://maven.elmakers.com/repository/" }
+    maven { url = "https://repo.sk1er.club/repository/maven-public" }
+    mavenLocal()
+}
+
+dependencies {
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+
+    //Spigot
+    compileOnly 'org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT'
+
+    //Ignite
+    implementation "space.vectrix.ignite:ignite-api:0.5.0"
+
+    // Faric Mappings
+    compileOnly "org.quiltmc:tiny-remapper:0.4.1"
+
+    //Mixins
+    compileOnly "org.spongepowered:mixin:0.8.3"
+
+    //Config Manager because yes (and this is the only config manager that i found...)
+    implementation "gg.essential:vigilance-1.17-fabric:166+next"
+
+    //Utils
+    implementation "it.unimi.dsi:fastutil:8.5.4"
+}

@@ -1,0 +1,10 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven { url = "https://papermc.io/repo/repository/maven-public/" }
+        maven { url = "https://mvn.thearcanebrony.net/repository/maven-public/" }
+        maven { url = "https://jitpack.io/" }
+        mavenCentral()
+    }
+}
+rootProject.name = 'PacifistOptimizations'

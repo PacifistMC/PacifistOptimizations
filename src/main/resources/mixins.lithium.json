@@ -1,0 +1,13 @@
+{
+  "package": "me.rancraftplayz.pacifist.optimizations.lithium.mixins",
+  "required": true,
+  "minVersion": "0.6.15",
+  "plugin": "me.rancraftplayz.pacifist.optimizations.lithium.MixinConfig",
+  "target": "@env(DEFAULT)",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "ai.goal.PathfinderGoalSelectorMixin"
+  ]
+}

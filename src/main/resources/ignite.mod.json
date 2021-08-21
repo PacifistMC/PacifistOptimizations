@@ -1,0 +1,11 @@
+{
+  "id": "pacifist-optimizations",
+  "version": "1.0.0",
+  "entry": "me.rancraftplayz.pacifist.optimizations.common.PacifistOptimizations",
+  "dependencies": [
+    "ignite"
+  ],
+  "mixins": [
+    "mixins.lithium.json"
+  ]
+}
