@@ -24,6 +24,12 @@ public class PacifistOptimizations {
         this.logger.info("Using Pacifist Optimizations!");
         if (config != null) {
             this.logger.info("Lithium: " + (PacifistConfig.lithium ? "Enabled" : "Disabled"));
+            if (PacifistConfig.lithium) {
+                this.logger.info("Unsafe Lithium Mixins: " + (PacifistConfig.disableUnsafeMixinsPaper ? "Disabled" : "Enabled"));
+            }
+            if (PacifistConfig.disableUnsafeMixinsPaper) {
+                this.logger.info("You can enable unsafe mixins in the config if your server isn't on paper");
+            }
         }
     }
 }

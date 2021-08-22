@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
+// TODO: Make a fix for papermc
 @Mixin(PathfinderGoalSelector.class)
 public abstract class PathfinderGoalSelectorMixin {
     private static final PathfinderGoal.Type[] CONTROLS = PathfinderGoal.Type.values();
@@ -56,14 +57,13 @@ public abstract class PathfinderGoalSelectorMixin {
      * @author JellySquid
      */
     @Overwrite
-    // This is e()
     public void doTick() {
         this.updateGoalStates();
         this.eGoals();
     }
 
     /**
-     * Checks the state of all availableGoals for the given entity, cing and dping them as necessary (because a goal
+     * Checks the state of all availableGoals for the given entity, starting and stopping them as necessary (because a goal
      * has been disabled, the controls are no longer available or have been reassigned, etc.)
      */
     private void updateGoalStates() {
@@ -78,23 +78,23 @@ public abstract class PathfinderGoalSelectorMixin {
 
         e.exitEnter("goalUpdate");
 
-        // Try to c new availableGoals where possible
+        // Try to start new availableGoals where possible
         this.cGoals();
 
         e.exit();
     }
 
     /**
-     * Attempts to d all d which are running and either shouldn't continue or no longer have available controls.
+     * Attempts to stop all availableGoals which are running and either shouldn't continue or no longer have available controls.
      */
     private void dGoals() {
         for (PathfinderGoalWrapped goal : this.d) {
-            // Filter out d which are not running
+            // Filter out availableGoals which are not running
             if (!goal.g()) {
                 continue;
             }
 
-            // If the goal shouldn't continue or any of its controls have been disabled, then d the goal
+            // If the goal shouldn't continue or any of its controls have been disabled, then stop the goal
             if (!goal.b() || this.areControlsDisabled(goal)) {
                 goal.d();
             }
@@ -102,7 +102,7 @@ public abstract class PathfinderGoalSelectorMixin {
     }
 
     /**
-     * Performs a scan over all currently held controls and releases them if their associated goal is dped.
+     * Performs a scan over all currently held controls and releases them if their associated goal is stopped.
      */
     private void cleanupControls() {
         for (PathfinderGoal.Type control : CONTROLS) {
@@ -117,11 +117,11 @@ public abstract class PathfinderGoalSelectorMixin {
     }
 
     /**
-     * Attempts to c all d which are not-already running, can be ced, and have their controls available.
+     * Attempts to start all availableGoals which are not-already running, can be started, and have their controls available.
      */
     private void cGoals() {
         for (PathfinderGoalWrapped goal : this.d) {
-            // Filter out d which are already running or can't be ced
+            // Filter out availableGoals which are already running or can't be started
             if (goal.g()) {
                 continue;
             }
@@ -131,12 +131,12 @@ public abstract class PathfinderGoalSelectorMixin {
                 continue;
             }
 
-            //canStart has side effects, so do not reorder it before the previous tests
+            // canStart has side effects, so do not reorder it before the previous tests
             if (!goal.a()) {
                 continue;
             }
 
-            // Hand over controls to this goal and d any d which depended on those controls
+            // Hand over controls to this goal and stop any availableGoals which depended on those controls
             for (PathfinderGoal.Type control : goal.i()) {
                 PathfinderGoalWrapped otherGoal = this.getGoalOccupyingControl(control);
 
@@ -152,12 +152,12 @@ public abstract class PathfinderGoalSelectorMixin {
     }
 
     /**
-     * Ticks all running AI d.
+     * Ticks all running AI availableGoals.
      */
     private void eGoals() {
         this.e.get().enter("goalTick");
 
-        // Tick all currently running d
+        // Tick all currently running availableGoals
         for (PathfinderGoalWrapped goal : this.d) {
             if (goal.g()) {
                 goal.e();

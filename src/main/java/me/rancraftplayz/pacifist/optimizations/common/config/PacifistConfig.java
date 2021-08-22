@@ -19,6 +19,14 @@ public class PacifistConfig extends Vigilant {
     )
     public static boolean lithium = true;
 
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Disable Unsafe Mixins for PaperMC",
+            description = "Only enable this if your server isn't running paper",
+            category = "PaperMC"
+    )
+    public static boolean disableUnsafeMixinsPaper = true;
+
     public PacifistConfig() {
         super(new File("./configs/pacifist-optimizations.toml"));
         this.initialize();

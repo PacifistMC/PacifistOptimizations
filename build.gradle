@@ -20,21 +20,21 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
 
-    //Spigot
+    // Spigot
     compileOnly 'org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT'
 
-    //Ignite
+    // Ignite
     implementation "space.vectrix.ignite:ignite-api:0.5.0"
 
     // Faric Mappings
     compileOnly "org.quiltmc:tiny-remapper:0.4.1"
 
-    //Mixins
+    // Mixins
     compileOnly "org.spongepowered:mixin:0.8.3"
 
-    //Config Manager because yes (and this is the only config manager that i found...)
+    // Config Manager because yes (and this is the only config manager that i found...)
     implementation "gg.essential:vigilance-1.17-fabric:166+next"
 
-    //Utils
+    // Utils
     implementation "it.unimi.dsi:fastutil:8.5.4"
 }

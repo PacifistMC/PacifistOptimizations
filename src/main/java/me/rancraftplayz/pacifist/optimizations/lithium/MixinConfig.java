@@ -27,6 +27,10 @@ public class MixinConfig implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         PacifistConfig config = PacifistConfig.getOrCreateConfig();
+        if (PacifistConfig.lithium && PacifistConfig.disableUnsafeMixinsPaper
+                && mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.ai.goal.PathfinderGoalSelectorMixin")) {
+            return false;
+        }
         return PacifistConfig.lithium;
     }
 

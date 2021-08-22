@@ -8,6 +8,10 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "ai.goal.PathfinderGoalSelectorMixin"
+    "ai.goal.PathfinderGoalSelectorMixin",
+    "ai.math.fastutil.BoxMixin",
+    "ai.math.fastutil.EnumAxisCycleMixin$BackwardMixin",
+    "ai.math.fastutil.EnumAxisCycleMixin$ForwardMixin",
+    "ai.math.fastutil.EnumDirectionMixin"
   ]
 }
