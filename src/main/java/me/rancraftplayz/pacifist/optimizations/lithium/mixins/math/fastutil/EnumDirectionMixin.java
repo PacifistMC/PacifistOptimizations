@@ -1,4 +1,4 @@
-package me.rancraftplayz.pacifist.optimizations.lithium.mixins.ai.math.fastutil;
+package me.rancraftplayz.pacifist.optimizations.lithium.mixins.math.fastutil;
 
 import net.minecraft.core.EnumDirection;
 import org.spongepowered.asm.mixin.Final;
