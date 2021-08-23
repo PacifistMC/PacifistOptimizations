@@ -1,7 +1,12 @@
+/**
+ * SOMEONE PLEASE GIVE ME AN OBFUSCATOR WHICH OBFUSCATED MOJANG MAPPINGS TO SPIGOT (EVEN IN MIXINS)
+ */
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.5.0'
     id 'net.kyori.indra' version "2.0.6"
+    id "io.github.patrick.remapper" version "1.1.0"
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
 }
 
 group 'me.rancraftplayz'
@@ -16,24 +21,66 @@ repositories {
     mavenLocal()
 }
 
+configurations {
+    shadowMe
+}
+
 dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    shadowMe "org.jetbrains.kotlin:kotlin-stdlib"
 
     // Spigot
+    compileOnly 'org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT:remapped-mojang'
     compileOnly 'org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT'
+    mojangMapping("org.spigotmc:minecraft-server:1.17.1-R0.1-SNAPSHOT:maps-mojang@txt")
+    spigotMapping("org.spigotmc:minecraft-server:1.17.1-R0.1-SNAPSHOT:maps-spigot@csrg")
 
     // Ignite
     implementation "space.vectrix.ignite:ignite-api:0.5.0"
 
-    compileOnly "org.quiltmc:tiny-remapper:0.4.1"
-
     // Mixins
     compileOnly "org.spongepowered:mixin:0.8.3"
 
-    // Config Manager because yes (and this is the only config manager that i found...)
-    implementation "gg.essential:vigilance-1.17-fabric:166+next"
+    // Config Manager because sponge didn't like me very much (and this is the only config manager that i found other than sponge)
+    implementation("gg.essential:vigilance-1.17-fabric:166+next") {
+        exclude module: 'fabric-loader'
+    }
+    shadowMe("gg.essential:vigilance-1.17-fabric:166+next") {
+        exclude module: 'fabric-loader'
+    }
 
     // Utils
     implementation "it.unimi.dsi:fastutil:8.5.4"
+    shadowMe "it.unimi.dsi:fastutil:8.5.4"
 }
+
+shadowJar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    configurations = [project.configurations.getByName("shadowMe")]
+    archiveBaseName.set("${project.name}-${project.version}")
+    archiveClassifier.set('')
+    archiveVersion.set('')
+
+    exclude(
+            "**/LICENSE.md",
+            "**/LICENSE.txt",
+            "**/LICENSE",
+            "**/NOTICE",
+            "**/NOTICE.txt",
+            "pack.mcmeta",
+            "dummyThing",
+            "**/module-info.class",
+            "META-INF/proguard/**",
+            "META-INF/maven/**",
+            "META-INF/versions/**",
+            "META-INF/com.android.tools/**",
+            "fabric.mod.json"
+    )
+    mergeServiceFiles()
+}
+tasks.getByName("remap").dependsOn(tasks.getByName("shadowJar"))
+
+/**
+ * To build the jar you need to run the task remap
+ */

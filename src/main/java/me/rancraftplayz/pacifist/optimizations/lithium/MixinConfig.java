@@ -1,14 +1,9 @@
 package me.rancraftplayz.pacifist.optimizations.lithium;
 
-import me.rancraftplayz.pacifist.optimizations.common.PacifistOptimizations;
 import me.rancraftplayz.pacifist.optimizations.common.config.PacifistConfig;
-import me.rancraftplayz.pacifist.optimizations.common.config.PacifistInfo;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
-import org.spongepowered.configurate.CommentedConfigurationNode;
-import space.vectrix.ignite.api.config.Configuration;
-import space.vectrix.ignite.api.config.Configurations;
 
 import java.util.List;
 import java.util.Set;
@@ -28,7 +23,7 @@ public class MixinConfig implements IMixinConfigPlugin {
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         PacifistConfig config = PacifistConfig.getOrCreateConfig();
         if (PacifistConfig.disableUnsafeMixinsPaper
-                && mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.ai.goal.PathfinderGoalSelectorMixin")) {
+                && mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.ai.goal.GoalSelectorMixin")) {
             return false;
         }
         if (mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.entity.data_tracker.use_arrays.DataWatcherMixin")) {

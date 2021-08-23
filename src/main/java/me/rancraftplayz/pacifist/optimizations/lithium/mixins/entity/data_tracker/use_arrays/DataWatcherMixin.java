@@ -1,6 +1,7 @@
 package me.rancraftplayz.pacifist.optimizations.lithium.mixins.entity.data_tracker.use_arrays;
 
 import net.minecraft.CrashReport;
+import net.minecraft.CrashReportCategory;
 import net.minecraft.CrashReportSystemDetails;
 import net.minecraft.ReportedException;
 import net.minecraft.network.syncher.DataWatcher;
@@ -83,10 +84,10 @@ public abstract class DataWatcherMixin {
     }
 
     private static <T> ReportedException onGetException(Throwable cause, DataWatcherObject<T> data) {
-        CrashReport report = CrashReport.a(cause, "Getting synced entity data");
+        CrashReport report = CrashReport.forThrowable(cause, "Getting synced entity data");
 
-        CrashReportSystemDetails section = report.a("Synced entity data");
-        section.a("Data ID", data);
+        CrashReportCategory section = report.addCategory("Synced entity data");
+        section.setDetail("Data ID", data);
 
         return new ReportedException(report);
     }

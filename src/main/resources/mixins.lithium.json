@@ -8,12 +8,12 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "ai.goal.PathfinderGoalSelectorMixin",
+    "ai.goal.GoalSelectorMixin",
     "entity.data_tracker.use_arrays.DataWatcherMixin",
     "entity.data_tracker.use_arrays.DataWatcherMixinPaperMC",
     "math.fastutil.BoxMixin",
+    "math.fastutil.DirectionMixin",
     "math.fastutil.EnumAxisCycleMixin$BackwardMixin",
-    "math.fastutil.EnumAxisCycleMixin$ForwardMixin",
-    "math.fastutil.EnumDirectionMixin"
+    "math.fastutil.EnumAxisCycleMixin$ForwardMixin"
   ]
 }
