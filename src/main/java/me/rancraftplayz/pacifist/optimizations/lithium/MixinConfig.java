@@ -27,9 +27,23 @@ public class MixinConfig implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         PacifistConfig config = PacifistConfig.getOrCreateConfig();
-        if (PacifistConfig.lithium && PacifistConfig.disableUnsafeMixinsPaper
+        if (PacifistConfig.disableUnsafeMixinsPaper
                 && mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.ai.goal.PathfinderGoalSelectorMixin")) {
             return false;
+        }
+        if (mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.entity.data_tracker.use_arrays.DataWatcherMixin")) {
+            try {
+                Class.forName("org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.ints.Int2ObjectMap");
+            } catch (ClassNotFoundException e) {
+                return false;
+            }
+        }
+        if (mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.entity.data_tracker.use_arrays.DataWatcherMixinPaperMC")) {
+            try {
+                Class.forName("org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.ints.Int2ObjectMap");
+                return false;
+            } catch (ClassNotFoundException ignored) {
+            }
         }
         return PacifistConfig.lithium;
     }

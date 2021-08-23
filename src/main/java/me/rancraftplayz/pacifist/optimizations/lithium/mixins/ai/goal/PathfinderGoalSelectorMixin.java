@@ -16,6 +16,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
+/**
+ * Original code by JellySquid, licensed under GNU Lesser General Public License v3.0
+ * you can find the original code on https://github.com/CaffeineMC/lithium-fabric/ (Yarn mappings)
+ */
+
 // TODO: Make a fix for papermc
 @Mixin(PathfinderGoalSelector.class)
 public abstract class PathfinderGoalSelectorMixin {
@@ -59,7 +64,7 @@ public abstract class PathfinderGoalSelectorMixin {
     @Overwrite
     public void doTick() {
         this.updateGoalStates();
-        this.eGoals();
+        this.tickGoals();
     }
 
     /**
@@ -71,7 +76,7 @@ public abstract class PathfinderGoalSelectorMixin {
         e.enter("goalCleanup");
 
         // Stop any availableGoals which are disabled or shouldn't continue executing
-        this.dGoals();
+        this.stopGoals();
 
         // Update the controls
         this.cleanupControls();
@@ -79,7 +84,7 @@ public abstract class PathfinderGoalSelectorMixin {
         e.exitEnter("goalUpdate");
 
         // Try to start new availableGoals where possible
-        this.cGoals();
+        this.startGoals();
 
         e.exit();
     }
@@ -87,7 +92,7 @@ public abstract class PathfinderGoalSelectorMixin {
     /**
      * Attempts to stop all availableGoals which are running and either shouldn't continue or no longer have available controls.
      */
-    private void dGoals() {
+    private void stopGoals() {
         for (PathfinderGoalWrapped goal : this.d) {
             // Filter out availableGoals which are not running
             if (!goal.g()) {
@@ -119,7 +124,7 @@ public abstract class PathfinderGoalSelectorMixin {
     /**
      * Attempts to start all availableGoals which are not-already running, can be started, and have their controls available.
      */
-    private void cGoals() {
+    private void startGoals() {
         for (PathfinderGoalWrapped goal : this.d) {
             // Filter out availableGoals which are already running or can't be started
             if (goal.g()) {
@@ -154,7 +159,7 @@ public abstract class PathfinderGoalSelectorMixin {
     /**
      * Ticks all running AI availableGoals.
      */
-    private void eGoals() {
+    private void tickGoals() {
         this.e.get().enter("goalTick");
 
         // Tick all currently running availableGoals

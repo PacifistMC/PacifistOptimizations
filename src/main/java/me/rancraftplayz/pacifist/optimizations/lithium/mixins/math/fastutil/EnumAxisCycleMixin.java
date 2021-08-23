@@ -4,6 +4,11 @@ import net.minecraft.core.EnumDirection;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
+/**
+ * Original code by JellySquid, licensed under GNU Lesser General Public License v3.0
+ * you can find the original code on https://github.com/CaffeineMC/lithium-fabric/ (Yarn mappings)
+ */
+
 // Man i should find a better way of converting yarn mappings to spigot mappings
 public class EnumAxisCycleMixin {
     static {

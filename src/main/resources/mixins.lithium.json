@@ -9,6 +9,8 @@
   },
   "mixins": [
     "ai.goal.PathfinderGoalSelectorMixin",
+    "entity.data_tracker.use_arrays.DataWatcherMixin",
+    "entity.data_tracker.use_arrays.DataWatcherMixinPaperMC",
     "math.fastutil.BoxMixin",
     "math.fastutil.EnumAxisCycleMixin$BackwardMixin",
     "math.fastutil.EnumAxisCycleMixin$ForwardMixin",
