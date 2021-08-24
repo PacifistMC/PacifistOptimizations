@@ -1,6 +1,3 @@
-/**
- * SOMEONE PLEASE GIVE ME AN OBFUSCATOR WHICH OBFUSCATED MOJANG MAPPINGS TO SPIGOT (EVEN IN MIXINS)
- */
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.5.0'

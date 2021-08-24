@@ -8,6 +8,7 @@
     "defaultRequire": 1
   },
   "mixins": [
+    "ai.brain.BrainMixin",
     "ai.goal.GoalSelectorMixin",
     "common.MathHelperMixin",
     "entity.data_tracker.use_arrays.DataWatcherMixin",
