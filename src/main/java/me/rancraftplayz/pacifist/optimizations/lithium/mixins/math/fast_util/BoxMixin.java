@@ -1,4 +1,4 @@
-package me.rancraftplayz.pacifist.optimizations.lithium.mixins.math.fastutil;
+package me.rancraftplayz.pacifist.optimizations.lithium.mixins.math.fast_util;
 
 import net.minecraft.core.Direction;
 import net.minecraft.world.phys.AABB;

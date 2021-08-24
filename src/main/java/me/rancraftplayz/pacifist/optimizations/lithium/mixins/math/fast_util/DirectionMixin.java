@@ -1,7 +1,6 @@
-package me.rancraftplayz.pacifist.optimizations.lithium.mixins.math.fastutil;
+package me.rancraftplayz.pacifist.optimizations.lithium.mixins.math.fast_util;
 
 import net.minecraft.core.Direction;
-import net.minecraft.core.EnumDirection;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -17,12 +16,12 @@ import java.util.Random;
 @Mixin(Direction.class)
 public class DirectionMixin {
     @Final
-    @Shadow
-    private int h;
+    @Shadow(aliases = "h")
+    private int oppositeIndex;
 
-    @Shadow
+    @Shadow(aliases = "o")
     @Final
-    private static Direction[] o;
+    private static Direction[] VALUES;
 
     /**
      * @reason Avoid the modulo/abs operations
@@ -30,7 +29,7 @@ public class DirectionMixin {
      */
     @Overwrite
     public Direction opposite() {
-        return o[h];
+        return VALUES[oppositeIndex];
     }
 
     /**
@@ -39,6 +38,6 @@ public class DirectionMixin {
      */
     @Overwrite
     public static Direction a(Random rand) {
-        return o[rand.nextInt(o.length)];
+        return VALUES[rand.nextInt(VALUES.length)];
     }
 }

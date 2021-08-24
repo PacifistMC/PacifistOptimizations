@@ -9,11 +9,15 @@
   },
   "mixins": [
     "ai.goal.GoalSelectorMixin",
+    "common.MathHelperMixin",
     "entity.data_tracker.use_arrays.DataWatcherMixin",
     "entity.data_tracker.use_arrays.DataWatcherMixinPaperMC",
-    "math.fastutil.BoxMixin",
-    "math.fastutil.DirectionMixin",
-    "math.fastutil.EnumAxisCycleMixin$BackwardMixin",
-    "math.fastutil.EnumAxisCycleMixin$ForwardMixin"
+    "math.fast_blockpos.BlockPosMixin",
+    "math.fast_blockpos.DirectionMixin",
+    "math.fast_util.BoxMixin",
+    "math.fast_util.DirectionMixin",
+    "math.fast_util.EnumAxisCycleMixin$BackwardMixin",
+    "math.fast_util.EnumAxisCycleMixin$ForwardMixin",
+    "math.sine_lut.MixinMthHelper"
   ]
 }
