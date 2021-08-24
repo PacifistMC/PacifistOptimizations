@@ -37,7 +37,7 @@ dependencies {
     spigotMapping("org.spigotmc:minecraft-server:1.17.1-R0.1-SNAPSHOT:maps-spigot@csrg")
 
     // Ignite
-    implementation "space.vectrix.ignite:ignite-api:0.5.0"
+    implementation "space.vectrix.ignite:ignite-api:0.5.1"
 
     // Mixins
     compileOnly "org.spongepowered:mixin:0.8.3"
