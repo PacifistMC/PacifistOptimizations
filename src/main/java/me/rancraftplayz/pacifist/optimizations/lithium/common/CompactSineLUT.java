@@ -1,6 +1,6 @@
 package me.rancraftplayz.pacifist.optimizations.lithium.common;
 
-import me.rancraftplayz.pacifist.optimizations.lithium.mixins.common.MathHelperMixin;
+import me.rancraftplayz.pacifist.optimizations.lithium.mixins.common.MathHelperAccessor;
 import net.minecraft.util.Mth;
 
 /**
@@ -35,14 +35,14 @@ public class CompactSineLUT {
     static {
         // Copy the sine table, covering to raw int bits
         for (int i = 0; i < SINE_TABLE_INT.length; i++) {
-            SINE_TABLE_INT[i] = Float.floatToRawIntBits(MathHelperMixin.getSIN()[i]);
+            SINE_TABLE_INT[i] = Float.floatToRawIntBits(MathHelperAccessor.getSIN()[i]);
         }
 
-        SINE_TABLE_MIDPOINT = MathHelperMixin.getSIN()[MathHelperMixin.getSIN().length / 2];
+        SINE_TABLE_MIDPOINT = MathHelperAccessor.getSIN()[MathHelperAccessor.getSIN().length / 2];
 
         // Test that the lookup table is correct during runtime
-        for (int i = 0; i < MathHelperMixin.getSIN().length; i++) {
-            float expected = MathHelperMixin.getSIN()[i];
+        for (int i = 0; i < MathHelperAccessor.getSIN().length; i++) {
+            float expected = MathHelperAccessor.getSIN()[i];
             float value = lookup(i);
 
             if (expected != value) {

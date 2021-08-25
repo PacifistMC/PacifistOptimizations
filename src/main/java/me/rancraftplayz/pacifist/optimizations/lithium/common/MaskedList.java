@@ -5,6 +5,11 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.*;
 import java.util.function.Consumer;
 
+/**
+ * Original code by JellySquid, licensed under GNU Lesser General Public License v3.0
+ * you can find the original code on https://github.com/CaffeineMC/lithium-fabric/ (Yarn mappings)
+ */
+
 public class MaskedList<E> extends AbstractList<E> {
     private final ObjectArrayList<E> allElements;
     private final BitSet visibleMask;

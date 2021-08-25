@@ -27,6 +27,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Original code by JellySquid, licensed under GNU Lesser General Public License v3.0
+ * you can find the original code on https://github.com/CaffeineMC/lithium-fabric/ (Yarn mappings)
+ */
+
 @Mixin(Brain.class)
 public class BrainMixin<E extends LivingEntity> {
     @Shadow(aliases = "f")
