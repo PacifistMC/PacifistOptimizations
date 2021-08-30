@@ -9,6 +9,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+/**
+ * Original code by JellySquid, licensed under GNU Lesser General Public License v3.0
+ * you can find the original code on https://github.com/CaffeineMC/lithium-fabric/ (Yarn mappings)
+ */
+
 @Mixin(BlockBehaviour.BlockStateBase.class)
 public class BlockStateBaseMixin implements BlockStateFlagHolder {
     private int flags;

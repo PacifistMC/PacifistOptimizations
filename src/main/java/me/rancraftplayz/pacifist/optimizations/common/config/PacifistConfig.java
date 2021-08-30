@@ -7,6 +7,9 @@ import gg.essential.vigilance.data.PropertyType;
 import java.io.File;
 
 public class PacifistConfig extends Vigilant {
+    /**
+     * Lithium
+     */
     @Property(
             type = PropertyType.SWITCH,
             name = "Lithium",
@@ -15,6 +18,9 @@ public class PacifistConfig extends Vigilant {
     )
     public static boolean lithium = true;
 
+    /**
+     * PaperMC
+     */
     @Property(
             type = PropertyType.SWITCH,
             name = "Disable Unsafe Mixins for PaperMC",
@@ -22,6 +28,8 @@ public class PacifistConfig extends Vigilant {
             category = "PaperMC"
     )
     public static boolean disableUnsafeMixinsPaper = true;
+
+
 
     public PacifistConfig() {
         super(new File("./configs/pacifist-optimizations.toml"));

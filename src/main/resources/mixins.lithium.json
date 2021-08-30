@@ -10,6 +10,16 @@
   "mixins": [
     "ai.brain.BrainMixin",
     "ai.goal.GoalSelectorMixin",
+    "ai.nearby_entity_tracking.EntityAccessor",
+    "ai.nearby_entity_tracking.EntityMixin",
+    "ai.nearby_entity_tracking.EntityTrackingSectionMixin",
+    "ai.nearby_entity_tracking.SectionedEntityCacheMixin",
+    "ai.nearby_entity_tracking.ServerEntityManagerAccessor",
+    "ai.nearby_entity_tracking.ServerEntityManagerListenerMixin",
+    "ai.nearby_entity_tracking.ServerEntityManagerMixin",
+    "ai.nearby_entity_tracking.ServerWorldAccessor",
+    "ai.nearby_entity_tracking.goals.FleeEntityGoalMixin",
+    "ai.nearby_entity_tracking.goals.LookAtEntityGoalMixin",
     "ai.pathing.BlockStateBaseMixin",
     "ai.pathing.ChunkCacheMixin",
     "ai.pathing.LandPathNodeMakerMixin",
@@ -23,8 +33,8 @@
     "math.fast_blockpos.DirectionMixin",
     "math.fast_util.BoxMixin",
     "math.fast_util.DirectionMixin",
-    "math.fast_util.EnumAxisCycleMixin$BackwardMixin",
-    "math.fast_util.EnumAxisCycleMixin$ForwardMixin",
+    "math.fast_util.EnumAxisCycleBackwardMixin",
+    "math.fast_util.EnumAxisCycleForwardMixin",
     "math.sine_lut.MixinMthHelper"
   ]
 }

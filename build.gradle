@@ -9,6 +9,9 @@ plugins {
 group 'me.rancraftplayz'
 version '1.0-SNAPSHOT'
 
+targetCompatibility = JavaVersion.VERSION_16
+sourceCompatibility = JavaVersion.VERSION_16
+
 repositories {
     mavenCentral()
     maven { url = 'https://repo.spongepowered.org/maven' }
@@ -77,6 +80,10 @@ shadowJar {
     mergeServiceFiles()
 }
 tasks.getByName("remap").dependsOn(tasks.getByName("shadowJar"))
+
+compileJava {
+    options.release = 16
+}
 
 /**
  * To build the jar you need to run the task remap
