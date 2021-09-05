@@ -22,10 +22,6 @@ public class MixinConfig implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         PacifistConfig config = PacifistConfig.getOrCreateConfig();
-        if (PacifistConfig.disableUnsafeMixinsPaper
-                && mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.ai.goal.GoalSelectorMixin")) {
-            return false;
-        }
         if (mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.entity.data_tracker.use_arrays.DataWatcherMixin")) {
             try {
                 Class.forName("org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.ints.Int2ObjectMap");
@@ -36,6 +32,20 @@ public class MixinConfig implements IMixinConfigPlugin {
         if (mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.entity.data_tracker.use_arrays.DataWatcherMixinPaperMC")) {
             try {
                 Class.forName("org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.ints.Int2ObjectMap");
+                return false;
+            } catch (ClassNotFoundException ignored) {
+            }
+        }
+        if (mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.ai.goal.GoalSelectorMixin")) {
+            try {
+                Class.forName("org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet");
+            } catch (ClassNotFoundException e) {
+                return false;
+            }
+        }
+        if (mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.ai.goal.GoalSelectorMixinPaperMC")) {
+            try {
+                Class.forName("org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet");
                 return false;
             } catch (ClassNotFoundException ignored) {
             }

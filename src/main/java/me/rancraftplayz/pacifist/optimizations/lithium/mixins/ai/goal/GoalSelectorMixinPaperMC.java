@@ -4,7 +4,7 @@ import net.minecraft.util.profiling.InactiveProfiler;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.GoalSelector;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
-import org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -21,7 +21,7 @@ import java.util.function.Supplier;
  */
 
 @Mixin(GoalSelector.class)
-public abstract class GoalSelectorMixin {
+public abstract class GoalSelectorMixinPaperMC {
     private static final Goal.Flag[] CONTROLS = Goal.Flag.values();
 
     @Shadow
