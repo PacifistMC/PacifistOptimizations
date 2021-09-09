@@ -96,5 +96,5 @@ compileJava {
 }
 
 /**
- * To build the jar you need to run the task remap
+ * To build the jar you need to run the task remapJar
  */
