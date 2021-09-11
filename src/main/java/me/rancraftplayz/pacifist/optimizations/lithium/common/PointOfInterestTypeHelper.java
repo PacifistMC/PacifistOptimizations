@@ -6,6 +6,11 @@ import net.minecraft.world.level.chunk.LevelChunkSection;
 import java.util.Set;
 import java.util.function.Predicate;
 
+/**
+ * Original code by JellySquid, licensed under GNU Lesser General Public License v3.0
+ * you can find the original code on https://github.com/CaffeineMC/lithium-fabric/ (Yarn mappings)
+ */
+
 public class PointOfInterestTypeHelper {
     private static Predicate<BlockState> POI_BLOCKSTATE_PREDICATE;
 

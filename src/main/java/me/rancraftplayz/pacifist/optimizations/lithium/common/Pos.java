@@ -3,6 +3,11 @@ package me.rancraftplayz.pacifist.optimizations.lithium.common;
 import net.minecraft.core.SectionPos;
 import net.minecraft.world.level.LevelHeightAccessor;
 
+/**
+ * Original code by JellySquid, licensed under GNU Lesser General Public License v3.0
+ * you can find the original code on https://github.com/CaffeineMC/lithium-fabric/ (Yarn mappings)
+ */
+
 public class Pos {
 
     public static class BlockCoord {

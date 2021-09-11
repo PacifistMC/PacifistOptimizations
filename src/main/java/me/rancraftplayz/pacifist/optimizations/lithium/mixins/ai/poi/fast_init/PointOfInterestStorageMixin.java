@@ -21,6 +21,11 @@ import java.io.File;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
+/**
+ * Original code by JellySquid, licensed under GNU Lesser General Public License v3.0
+ * you can find the original code on https://github.com/CaffeineMC/lithium-fabric/ (Yarn mappings)
+ */
+
 @Mixin(PoiManager.class)
 public abstract class PointOfInterestStorageMixin extends SectionStorage<PoiSection> {
     public PointOfInterestStorageMixin(File var0, Function<Runnable, Codec<PoiSection>> var1, Function<Runnable, PoiSection> var2, DataFixer var3, DataFixTypes var4, boolean var5, LevelHeightAccessor var6) {

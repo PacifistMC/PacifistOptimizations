@@ -3,6 +3,11 @@ package me.rancraftplayz.pacifist.optimizations.lithium.common;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
 /**
+ * Original code by JellySquid, licensed under GNU Lesser General Public License v3.0
+ * you can find the original code on https://github.com/CaffeineMC/lithium-fabric/ (Yarn mappings)
+ */
+
+/**
  * An extension for {@link Long2ObjectOpenHashMap} which allows callbacks to be installed for when an item is added to
  * or removed from the map.
  */

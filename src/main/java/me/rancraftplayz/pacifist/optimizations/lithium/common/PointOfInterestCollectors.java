@@ -8,6 +8,11 @@ import net.minecraft.world.entity.ai.village.poi.PoiType;
 
 import java.util.function.Predicate;
 
+/**
+ * Original code by JellySquid, licensed under GNU Lesser General Public License v3.0
+ * you can find the original code on https://github.com/CaffeineMC/lithium-fabric/ (Yarn mappings)
+ */
+
 public class PointOfInterestCollectors {
     public static Collector<PoiRecord> collectAllWithinRadius(BlockPos pos, double radius, Collector<PoiRecord> out) {
         double radiusSq = radius * radius;

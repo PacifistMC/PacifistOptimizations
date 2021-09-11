@@ -14,6 +14,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Predicate;
 
+/**
+ * Original code by JellySquid, licensed under GNU Lesser General Public License v3.0
+ * you can find the original code on https://github.com/CaffeineMC/lithium-fabric/ (Yarn mappings)
+ */
+
 @Mixin(PoiSection.class)
 public class PointOfInterestSetMixin implements PointOfInterestSetFilterable {
     @Shadow
