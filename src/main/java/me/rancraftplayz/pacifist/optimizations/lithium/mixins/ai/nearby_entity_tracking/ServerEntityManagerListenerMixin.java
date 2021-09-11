@@ -33,16 +33,21 @@ public class ServerEntityManagerListenerMixin<T extends EntityAccess> {
     @Final
     private T entity;
 
-    @Shadow(aliases = "b")
-    PersistentEntitySectionManager<T> manager;
+    net.minecraft.world.level.entity.PersistentEntitySectionManager<T> manager;
 
     @Shadow(aliases = "d")
     private long sectionPos;
 
     private int notificationMask;
 
+    // me when spigot is annoying
+    @Inject(method = "<init>", at = @At("TAIL"))
+    private void spipgot(PersistentEntitySectionManager<T> outer, EntityAccess var1, long var2, EntitySection<?> var4, CallbackInfo ci) {
+        this.manager = outer;
+    }
+
     @Inject(method = "<init>", at = @At("RETURN"))
-    private void init(PersistentEntitySectionManager<?> outer, EntityAccess var1, long var2, EntitySection<T> var4, CallbackInfo ci) {
+    private void init(net.minecraft.world.level.entity.PersistentEntitySectionManager<?> outer, EntityAccess var1, long var2, EntitySection<T> var4, CallbackInfo ci) {
         this.notificationMask = EntityTrackerEngine.getNotificationMask(this.entity.getClass());
     }
 
@@ -65,8 +70,7 @@ public class ServerEntityManagerListenerMixin<T extends EntityAccess> {
     )
     private void onAddEntity(CallbackInfo ci, BlockPos blockPos, long newPos, Visibility entityTrackingStatus, EntitySection<T> entityTrackingSection) {
         NearbyEntityListenerMulti listener = ((NearbyEntityListenerProvider) this.entity).getListener();
-        if (listener != null)
-        {
+        if (listener != null) {
             //noinspection unchecked
             listener.forEachChunkInRangeChange(
                     ((ServerEntityManagerAccessor<T>) this.manager).getf(),
@@ -82,8 +86,7 @@ public class ServerEntityManagerListenerMixin<T extends EntityAccess> {
     @Inject(method = "a(Lnet/minecraft/world/entity/Entity$RemovalReason;)V", at = @At("HEAD"))
     private void onRemoveEntity(Entity.RemovalReason reason, CallbackInfo ci) {
         NearbyEntityListenerMulti listener = ((NearbyEntityListenerProvider) this.entity).getListener();
-        if (listener != null)
-        {
+        if (listener != null) {
             //noinspection unchecked
             listener.forEachChunkInRangeChange(
                     ((ServerEntityManagerAccessor<T>) this.manager).getf(),

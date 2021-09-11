@@ -23,31 +23,33 @@ public class MixinConfig implements IMixinConfigPlugin {
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         PacifistConfig config = PacifistConfig.getOrCreateConfig();
         if (mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.entity.data_tracker.use_arrays.DataWatcherMixin")) {
-            try {
-                Class.forName("org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.ints.Int2ObjectMap");
-            } catch (ClassNotFoundException e) {
+            if (!PacifistConfig.isItCursed()) {
                 return false;
             }
         }
         if (mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.entity.data_tracker.use_arrays.DataWatcherMixinPaperMC")) {
-            try {
-                Class.forName("org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.ints.Int2ObjectMap");
+            if (PacifistConfig.isItCursed()) {
                 return false;
-            } catch (ClassNotFoundException ignored) {
             }
         }
         if (mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.ai.goal.GoalSelectorMixin")) {
-            try {
-                Class.forName("org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet");
-            } catch (ClassNotFoundException e) {
+            if (!PacifistConfig.isItCursed()) {
                 return false;
             }
         }
         if (mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.ai.goal.GoalSelectorMixinPaperMC")) {
-            try {
-                Class.forName("org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet");
+            if (PacifistConfig.isItCursed()) {
                 return false;
-            } catch (ClassNotFoundException ignored) {
+            }
+        }
+        if (mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.ai.poi.fast_retrieval.SerializingRegionBasedStorageMixin")) {
+            if (!PacifistConfig.isItCursed()) {
+                return false;
+            }
+        }
+        if (mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.ai.poi.fast_retrieval.SerializingRegionBasedStorageMixinPaperMC")) {
+            if (PacifistConfig.isItCursed()) {
+                return false;
             }
         }
         return PacifistConfig.lithium;
