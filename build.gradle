@@ -46,9 +46,8 @@ dependencies {
     // Remapper
     mojangProguardMappings "org.spigotmc:minecraft-server:1.17.1-R0.1-SNAPSHOT:maps-mojang@txt"
     spigotCsrgMappings "org.spigotmc:minecraft-server:1.17.1-R0.1-SNAPSHOT:maps-spigot@csrg"
-
-    // Remapper
     remapLib "org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT:remapped-mojang"
+    
     accessWidener fileTree(dir: 'src/main/resources', include: ['*.accesswidener'])
     accessWidenerLib "org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT:remapped-mojang"
 
