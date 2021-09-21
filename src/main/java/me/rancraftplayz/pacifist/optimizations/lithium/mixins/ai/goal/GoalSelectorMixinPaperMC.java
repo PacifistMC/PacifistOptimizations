@@ -1,5 +1,7 @@
 package me.rancraftplayz.pacifist.optimizations.lithium.mixins.ai.goal;
 
+import me.rancraftplayz.pacifist.optimizations.lithium.mixins.common.GoalAccessorMixinPaperMC;
+import net.minecraft.util.profiling.GameProfilerDisabled;
 import net.minecraft.util.profiling.InactiveProfiler;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.GoalSelector;
@@ -27,7 +29,7 @@ public abstract class GoalSelectorMixinPaperMC {
     @Shadow
     @Final
     // This is profiler
-    private Supplier<InactiveProfiler> e;
+    private Supplier<GameProfilerDisabled> e;
 
     @Mutable
     @Shadow
@@ -70,8 +72,8 @@ public abstract class GoalSelectorMixinPaperMC {
      * has been disabled, the controls are no longer available or have been reassigned, etc.)
      */
     private void updateGoalStates() {
-        InactiveProfiler profiler = this.e.get();
-        profiler.push("goalCleanup");
+        GameProfilerDisabled profiler = this.e.get();
+        profiler.enter("goalCleanup");
 
         // Stop any availableGoals which are disabled or shouldn't continue executing
         this.stopGoals();
@@ -79,12 +81,12 @@ public abstract class GoalSelectorMixinPaperMC {
         // Update the controls
         this.cleanupControls();
 
-        profiler.popPush("goalUpdate");
+        profiler.exitEnter("goalUpdate");
 
         // Try to start new availableGoals where possible
         this.startGoals();
 
-        profiler.pop();
+        profiler.exit();
     }
 
     /**
@@ -140,7 +142,7 @@ public abstract class GoalSelectorMixinPaperMC {
             }
 
             // Hand over controls to this goal and stop any availableGoals which depended on those controls
-            for (Goal.Flag control : goal.getFlags()) {
+            for (Goal.Flag control : (((GoalAccessorMixinPaperMC) goal.getGoal()).getGoalTypes())) {
                 WrappedGoal otherGoal = this.getGoalOccupyingControl(control);
 
                 if (otherGoal != null) {
@@ -158,7 +160,7 @@ public abstract class GoalSelectorMixinPaperMC {
      * Ticks all running AI availableGoals.
      */
     private void tickGoals() {
-        this.e.get().push("goalTick");
+        this.e.get().enter("goalTick");
 
         // Tick all currently running availableGoals
         for (WrappedGoal goal : this.d) {
@@ -167,14 +169,14 @@ public abstract class GoalSelectorMixinPaperMC {
             }
         }
 
-        this.e.get().pop();
+        this.e.get().exit();
     }
 
     /**
      * Returns true if any controls of the specified goal are disabled.
      */
     private boolean areControlsDisabled(WrappedGoal goal) {
-        for (Goal.Flag control : goal.getFlags()) {
+        for (Goal.Flag control : (((GoalAccessorMixinPaperMC) goal.getGoal()).getGoalTypes())) {
             if (this.isControlDisabled(control)) {
                 return true;
             }
@@ -188,7 +190,7 @@ public abstract class GoalSelectorMixinPaperMC {
      * (acquired by another goal, but eligible for replacement) and not disabled for the entity.
      */
     private boolean areGoalControlsAvailable(WrappedGoal goal) {
-        for (Goal.Flag control : goal.getFlags()) {
+        for (Goal.Flag control : (((GoalAccessorMixinPaperMC) goal.getGoal()).getGoalTypes())) {
             if (this.isControlDisabled(control)) {
                 return false;
             }

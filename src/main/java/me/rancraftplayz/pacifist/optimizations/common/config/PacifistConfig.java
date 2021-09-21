@@ -18,6 +18,30 @@ public class PacifistConfig extends Vigilant {
     )
     public static boolean lithium = true;
 
+    /**
+     * Spigot
+     */
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Disable Spigot AsyncCatcher",
+            category = "Server-Settings",
+            subcategory = "Spigot"
+    )
+    public static boolean isAsyncCatcherDisabled = true;
+
+    /**
+     * Dimensional Threading
+     */
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Dimensional Threading",
+            category = "Optimizations",
+            subcategory = "Dimensional Threading"
+    )
+    public static boolean dimthread = true;
+    public static int dimthread_threadcount = 3;
+
+
     public PacifistConfig() {
         super(new File("./configs/pacifist-optimizations.toml"));
         this.initialize();

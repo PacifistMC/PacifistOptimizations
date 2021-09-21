@@ -52,6 +52,11 @@ public class MixinConfig implements IMixinConfigPlugin {
                 return false;
             }
         }
+        if (mixinClassName.equals("me.rancraftplayz.pacifist.optimizations.lithium.mixins.common.GoalAccessorMixinPaperMC")) {
+            if (PacifistConfig.isItCursed()) {
+                return false;
+            }
+        }
         return PacifistConfig.lithium;
     }
 

@@ -5,7 +5,12 @@
   "dependencies": [
     "ignite"
   ],
+  "access_widener": [
+    "all-obf.accesswidener"
+  ],
   "mixins": [
-    "mixins.lithium.json"
+    "mixins.lithium.json",
+    "mixins.spigot.json",
+    "mixins.dimthread.json"
   ]
 }

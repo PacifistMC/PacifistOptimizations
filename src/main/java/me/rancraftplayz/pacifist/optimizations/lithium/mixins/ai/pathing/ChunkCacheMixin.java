@@ -1,15 +1,14 @@
 package me.rancraftplayz.pacifist.optimizations.lithium.mixins.ai.pathing;
 
 import me.rancraftplayz.pacifist.optimizations.common.config.PacifistConfig;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.*;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.PathNavigationRegion;
-import net.minecraft.world.level.World;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
+import net.minecraft.world.level.chunk.ChunkSection;
+import net.minecraft.world.level.chunk.IChunkAccess;
 import net.minecraft.world.level.chunk.LevelChunkSection;
 import net.minecraft.world.level.material.FluidState;
 import org.spongepowered.asm.mixin.Final;
@@ -65,8 +64,8 @@ public abstract class ChunkCacheMixin implements BlockGetter {
             System.arraycopy(this.c[x], 0, this.chunksFlat, x * this.zLen, this.zLen);
         }
 
-        this.bottomY = this.getMinBuildHeight();
-        this.topY = this.getHeight();
+        this.bottomY = ((IBlockAccess) (Object) this).getMinBuildHeight();
+        this.topY = ((IBlockAccess) (Object) this).getHeight();
     }
 
     /**
@@ -89,10 +88,10 @@ public abstract class ChunkCacheMixin implements BlockGetter {
 
                 // Avoid going through Chunk#getBlockState
                 if (chunk != null) {
-                    LevelChunkSection section = chunk.getSections()[y >> 4];
+                    ChunkSection section = ((IChunkAccess) (Object) chunk).getSections()[y >> 4];
 
                     if (section != null) {
-                        return section.getBlockState(x & 15, y & 15, z & 15);
+                        return ((LevelChunkSection) (Object) section).getBlockState(x & 15, y & 15, z & 15);
                     }
                 }
             }

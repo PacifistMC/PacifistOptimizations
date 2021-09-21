@@ -1,0 +1,17 @@
+{
+  "package": "me.rancraftplayz.pacifist.optimizations.dimthread.mixins",
+  "required": true,
+  "minVersion": "0.6.15",
+  "plugin": "me.rancraftplayz.pacifist.optimizations.dimthread.MixinConfig",
+  "target": "@env(DEFAULT)",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "EntityMixin",
+    "MinecraftServerMixin",
+    "RedstoneWireBlockMixin",
+    "ServerChunkManagerMixin",
+    "WorldMixin"
+  ]
+}

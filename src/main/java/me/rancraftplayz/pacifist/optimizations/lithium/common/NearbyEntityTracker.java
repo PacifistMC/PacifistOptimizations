@@ -91,7 +91,7 @@ public class NearbyEntityTracker<T extends LivingEntity> implements NearbyEntity
         for (T entity : this.nearbyEntities.keySet()) {
             double distance;
             if (
-                    (box == null || box.intersects((AABB) (Object) entity.getBoundingBox())) &&
+                    (box == null || box.intersects((AABB) (Object) entity.getBoundingBoxForCulling())) &&
                             (distance = ((Entity) entity).distanceToSqr(x, y, z)) <= nearestDistance &&
                             targetPredicate.test(this.self, entity)
             ) {

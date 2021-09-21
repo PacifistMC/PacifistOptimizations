@@ -2,7 +2,7 @@ package me.rancraftplayz.pacifist.optimizations.common;
 
 import com.google.inject.Inject;
 import me.rancraftplayz.pacifist.optimizations.common.config.PacifistConfig;
-import net.minecraft.world.level.entity.PersistentEntitySectionManager;
+import me.rancraftplayz.pacifist.optimizations.dimthread.DimThread;
 import org.apache.logging.log4j.Logger;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import space.vectrix.ignite.api.Platform;
@@ -25,6 +25,15 @@ public class PacifistOptimizations {
         this.logger.info("Using Pacifist Optimizations!");
         if (config != null) {
             this.logger.info("Lithium: " + (PacifistConfig.lithium ? "Enabled" : "Disabled"));
+            this.logger.info("Should Remove Async Catcher: " + (PacifistConfig.isAsyncCatcherDisabled ? "Yes" : "No"));
+            this.logger.info("Dimensional Threading: " + (PacifistConfig.dimthread ? "Enabled" : "Disabled"));
+
+            this.logger.info("");
+            this.logger.info("You can change all of the settings above and more in the config!");
+
+            if (PacifistConfig.dimthread) {
+                DimThread.autoUpdate();
+            }
         }
     }
 }

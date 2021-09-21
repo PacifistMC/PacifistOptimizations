@@ -11,6 +11,7 @@
     "ai.brain.BrainMixin",
     "ai.goal.GoalSelectorMixin",
     "ai.goal.GoalSelectorMixinPaperMC",
+    "common.GoalAccessorMixinPaperMC",
     "ai.nearby_entity_tracking.EntityAccessor",
     "ai.nearby_entity_tracking.EntityMixin",
     "ai.nearby_entity_tracking.EntityTrackingSectionMixin",

@@ -27,6 +27,7 @@ repositories {
     maven { url = "https://maven.quiltmc.org/repository/release/" }
     maven { url = "https://maven.elmakers.com/repository/" }
     maven { url = "https://repo.sk1er.club/repository/maven-public" }
+    maven { url = "https://repo.sk1er.club/repository/maven-releases/" }
     mavenLocal()
 }
 
@@ -42,6 +43,9 @@ dependencies {
     // Spigot
     compileOnly 'org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT:remapped-mojang'
     compileOnly 'org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT'
+
+    // Spigot but better
+    compileOnly fileTree(dir: 'libs', include: 'hax.jar')
 
     // Remapper
     mojangProguardMappings "org.spigotmc:minecraft-server:1.17.1-R0.1-SNAPSHOT:maps-mojang@txt"
@@ -68,6 +72,14 @@ dependencies {
     // Utils
     implementation "it.unimi.dsi:fastutil:8.5.4"
     shadowMe "it.unimi.dsi:fastutil:8.5.4"
+    implementation fileTree(dir: 'libs', include: 'JavaUtils.jar')
+    shadowMe fileTree(dir: 'libs', include: 'JavaUtils.jar')
+    implementation("gg.essential:essential-1.8.9-forge:1438+release-launch") {
+        exclude group: "*"
+    }
+    shadowMe("gg.essential:essential-1.8.9-forge:1438+release-launch") {
+        exclude group: "*"
+    }
 }
 
 shadowJar {

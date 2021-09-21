@@ -1,0 +1,15 @@
+{
+  "package": "me.rancraftplayz.pacifist.optimizations.spigot.mixins",
+  "required": true,
+  "minVersion": "0.6.15",
+  "plugin": "me.rancraftplayz.pacifist.optimizations.spigot.MixinConfig",
+  "target": "@env(DEFAULT)",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "AsyncCatcherMixin",
+    "SimplePluginManagerMixin",
+    "SimplePluginManagerPaperMC"
+  ]
+}

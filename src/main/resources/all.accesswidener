@@ -1,0 +1,3 @@
+accessWidener v1 mojang
+# Dimensional Threading
+accessible class net/minecraft/server/level/ServerChunkCache$MainThreadExecutor

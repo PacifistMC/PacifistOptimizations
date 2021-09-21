@@ -48,7 +48,7 @@ public class LookAtEntityGoalMixin {
 
     @Redirect(method = "a", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/World;a(Ljava/util/List;Lnet/minecraft/world/entity/ai/targeting/PathfinderTargetCondition;Lnet/minecraft/world/entity/EntityLiving;DDD)Lnet/minecraft/world/entity/EntityLiving;"))
     private LivingEntity redirectGetNearestEntity(Level world, List<LivingEntity> var0, TargetingConditions var1, LivingEntity var2, double var3, double var5, double var7) {
-        return this.tracker.getClosestEntity(this.b.getBoundingBox().expandTowards(this.d, 3.0D, this.d), var1, var3, var5, var7);
+        return this.tracker.getClosestEntity(this.b.getBoundingBoxForCulling().expandTowards(this.d, 3.0D, this.d), var1, var3, var5, var7);
     }
 
     @Redirect(method = "a", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/World;a(Ljava/lang/Class;Lnet/minecraft/world/phys/AxisAlignedBB;Ljava/util/function/Predicate;)Ljava/util/List;"))
