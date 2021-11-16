@@ -19,6 +19,7 @@ public class DimThread {
     public static final ServerManager MANAGER = new ServerManager();
 
     public static void autoUpdate() {
+        // TODO: Have a good implementation of this without wasting computer's resources
         Multithreading.runAsync(() -> {
             try {
                 while(true) {
